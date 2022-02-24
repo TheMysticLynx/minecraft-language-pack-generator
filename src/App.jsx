@@ -1,5 +1,4 @@
 import React, { createRef } from 'react';
-import logo from './logo.svg';
 import './App.sass';
 import Field from './Field';
 import JSZip, { filter } from 'jszip';

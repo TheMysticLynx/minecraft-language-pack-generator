@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.e136f2a3.css",
-    "main.js": "/static/js/main.67b1fec6.js",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/index.html",
-    "main.e136f2a3.css.map": "/static/css/main.e136f2a3.css.map",
-    "main.67b1fec6.js.map": "/static/js/main.67b1fec6.js.map"
+    "main.css": "/minecraft-language-pack-generator/static/css/main.e136f2a3.css",
+    "main.js": "/minecraft-language-pack-generator/static/js/main.ea613d07.js",
+    "index.html": "/minecraft-language-pack-generator/index.html",
+    "main.e136f2a3.css.map": "/minecraft-language-pack-generator/static/css/main.e136f2a3.css.map",
+    "main.ea613d07.js.map": "/minecraft-language-pack-generator/static/js/main.ea613d07.js.map"
   },
   "entrypoints": [
     "static/css/main.e136f2a3.css",
-    "static/js/main.67b1fec6.js"
+    "static/js/main.ea613d07.js"
   ]
 }
