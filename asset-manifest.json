@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/minecraft-language-pack-generator/static/css/main.e136f2a3.css",
-    "main.js": "/minecraft-language-pack-generator/static/js/main.ea613d07.js",
-    "index.html": "/minecraft-language-pack-generator/index.html",
-    "main.e136f2a3.css.map": "/minecraft-language-pack-generator/static/css/main.e136f2a3.css.map",
-    "main.ea613d07.js.map": "/minecraft-language-pack-generator/static/js/main.ea613d07.js.map"
+    "main.css": "/static/css/main.e136f2a3.css",
+    "main.js": "/static/js/main.0ead8489.js",
+    "index.html": "/index.html",
+    "main.e136f2a3.css.map": "/static/css/main.e136f2a3.css.map",
+    "main.0ead8489.js.map": "/static/js/main.0ead8489.js.map"
   },
   "entrypoints": [
     "static/css/main.e136f2a3.css",
-    "static/js/main.ea613d07.js"
+    "static/js/main.0ead8489.js"
   ]
 }
