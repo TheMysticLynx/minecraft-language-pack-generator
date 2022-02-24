@@ -4,6 +4,7 @@ import Field from './Field';
 import JSZip, { filter } from 'jszip';
 import { saveAs } from 'file-saver';
 import Sidebar from './components/Sidebar';
+import langFile from './en_US.lang';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,22 +13,23 @@ class App extends React.Component {
     this.state = {
       name: '',
       description: '',
-      values: [],
       filterables: [],
       filters: []
     };
 
     this.inputFile = createRef();
+    this.values = []
   }
 
   setBase = (text) => {
     let values = text.split('\n')
-    values = values.map(value => {
+    values = values.map((value, i) => {
       let v = value.split('=');
       if(v.length == 2) {
         return {
           key: v[0],
-          value: v[1].slice(0, -1)
+          value: v[1],
+          index: i
         }
       }
     })
@@ -45,14 +47,15 @@ class App extends React.Component {
       }
     })
 
+    this.values = values
+
     this.setState({
-      values: values,
       filterables: filters 
     })
   }
 
   componentDidMount() {
-    fetch('./en_US.lang')
+    fetch(langFile)
     .then(res => res.text())
     .then(text => {this.setBase(text)})
   }
@@ -69,7 +72,7 @@ class App extends React.Component {
     let assets = zip.folder('assets');
     let minecraft = assets.folder('minecraft');
     let lang = minecraft.folder('lang');
-    lang.file('en_US.lang', this.state.values.filter(e => e != undefined).map(e => e.key + '=' + e.value + '\n').join(''));
+    lang.file('en_US.lang', this.values.filter(e => e != undefined).map(e => e.key + '=' + e.value + '\n').join(''));
 
     zip.generateAsync({type:"blob"})
     .then((blob) => {
@@ -100,8 +103,8 @@ class App extends React.Component {
   }
 
   render() {
-
-    let inputs = this.state.values.filter(e => {
+    
+    let inputs = this.values.filter(e => {
       if(e != undefined) {
         let s = e.key.split('.');
         if(this.state.filters.includes(s[0])) {
@@ -112,7 +115,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Sidebar filters={this.state.filterables} onChange={this.navbarChange}/>
+        <Sidebar filters={this.state.filterables} onChange={this.navbarChange} generate={this.generate} importFile={this.importFile}/>
         <div className='content'>
           <input type='file' id='file' onChange={this.onFileChange} ref={this.inputFile} style={{display: 'none'}}/>
           <h1>Pack Generator</h1>
@@ -127,10 +130,8 @@ class App extends React.Component {
           inputs.map((e, i) => {
             if(e == undefined) return <br key={i}/>
             return (
-              <Field key={i} value={e.value} name={e.key} superFunc={(v, key) => {
-                const arr = this.state.values.slice();
-                arr[i].value = v;
-                this.setState({values: arr});
+              <Field key={e.index} value={e.value} name={e.key} superFunc={(v) => {
+                this.values[e.index].value = v;
               }} />
             )
           }) :

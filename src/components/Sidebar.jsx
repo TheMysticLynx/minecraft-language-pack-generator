@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import './Sidebar.sass'
 
 function FilterItem(props) {
@@ -21,7 +21,6 @@ export default class Sidebar extends React.PureComponent {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="Sidebar">
                 <div className="Sidebar-header">
@@ -40,12 +39,12 @@ export default class Sidebar extends React.PureComponent {
                     <br />
                     <br></br>
                     <div className="Sidebar-item">
-                        <button className='generate' onClick={this.generate}>Generate</button>
+                        <button className='generate' onClick={this.props.generate}>Generate</button>
                         <p>Generate and download pack.</p>
                     </div>
                     <br></br>
                     <div className="Sidebar-item">
-                        <button className='import' onClick={this.importFile}>Import</button>
+                        <button className='import' onClick={this.props.importFile}>Import</button>
                         <p>Import a lang file.</p>
                     </div>
                     <h1>Filters</h1>
